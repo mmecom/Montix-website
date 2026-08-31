@@ -4,11 +4,21 @@ import { useState, type FormEvent } from "react";
 
 export default function ContactSection() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: wire to real endpoint/CRM
-    setSent(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://formspree.io/f/xzebdlbr", {
+        method: "POST",
+        body: new FormData(e.currentTarget),
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) setSent(true);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -113,7 +123,7 @@ export default function ContactSection() {
                 type="submit"
                 className="bg-accent text-bg border-0 text-[16px] font-semibold py-4 rounded-[2px] cursor-pointer hover:bg-accent-hover transition-colors"
               >
-                Vraag de gratis kosten-audit aan
+                {submitting ? "Verzenden..." : "Vraag de gratis kosten-audit aan"}
               </button>
               <span className="text-[13px] text-text-faint leading-[1.5]">
                 Vrijblijvend. Je gegevens gebruik ik alleen om contact op te nemen over je aanvraag.
