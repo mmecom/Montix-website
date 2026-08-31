@@ -44,7 +44,7 @@ export default function ContactSection() {
               <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-text-faint block mb-[5px]">
                 E-mail
               </span>
-              info@montix.com
+              info@montix.dev
             </div>
             <div>
               <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-text-faint block mb-[5px]">
