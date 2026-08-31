@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0B0C0C;
+  --color-panel: #0F1211;
+  --color-panel-hover: #141817;
+  --color-dashboard: #121514;
+  --color-text-primary: #F4F2ED;
+  --color-text-secondary: #D6D9D8;
+  --color-text-alt: #E4E7E6;
+  --color-text-body: #B4B9B8;
+  --color-text-muted: #A8ADAC;
+  --color-text-dim: #9AA0A0;
+  --color-text-dimmer: #8E9493;
+  --color-text-dimmest: #7E8584;
+  --color-text-faint: #6E7473;
+  --color-accent: #FF5C1A;
+  --color-accent-hover: #FF7C46;
+  --color-accent-tint: #FFB694;
+  --color-green: #6FCF97;
+  --color-hairline: rgba(255, 255, 255, 0.09);
+  --color-hairline-light: rgba(255, 255, 255, 0.08);
+  --color-hairline-faint: rgba(255, 255, 255, 0.06);
+  --color-hairline-input: rgba(255, 255, 255, 0.14);
+  --color-hairline-outline: rgba(255, 255, 255, 0.18);
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 24px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+input, textarea, button {
+  font-family: inherit;
+}
+
+@keyframes mx-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+@keyframes mx-marq {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-play-state: paused !important;
+  }
 }
